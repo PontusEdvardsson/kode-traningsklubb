@@ -26,7 +26,18 @@
         <img src="assets/kode-traningsklubb-logo.png" alt="Kode Träningsklubb logotyp">
         <span>Kode Träningsklubb</span>
       </a>
-      <nav class="site-nav" aria-label="Huvudmeny">
+      <button
+        class="menu-toggle"
+        type="button"
+        aria-expanded="false"
+        aria-controls="site-nav"
+        aria-label="Open menu"
+      >
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+      <nav class="site-nav" id="site-nav" aria-label="Huvudmeny">
         <a href="#om">Om</a>
         <a href="#priser">Priser</a>
         <a href="#medlem">Bli medlem</a>
@@ -273,5 +284,38 @@
       </div>
     </footer>
   </div>
+  <script>
+    (function () {
+      const header = document.querySelector(".site-header");
+      const button = document.querySelector(".menu-toggle");
+      const nav = document.querySelector(".site-nav");
+
+      if (!header || !button || !nav) {
+        return;
+      }
+
+      const closeMenu = () => {
+        header.classList.remove("menu-open");
+        button.setAttribute("aria-expanded", "false");
+        button.setAttribute("aria-label", "Open menu");
+      };
+
+      button.addEventListener("click", () => {
+        const isOpen = header.classList.toggle("menu-open");
+        button.setAttribute("aria-expanded", String(isOpen));
+        button.setAttribute("aria-label", isOpen ? "Close menu" : "Open menu");
+      });
+
+      nav.querySelectorAll("a").forEach((link) => {
+        link.addEventListener("click", closeMenu);
+      });
+
+      window.addEventListener("resize", () => {
+        if (window.innerWidth > 760) {
+          closeMenu();
+        }
+      });
+    }());
+  </script>
 </body>
 </html>
