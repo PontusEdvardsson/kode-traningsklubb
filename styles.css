@@ -145,8 +145,12 @@ a {
 }
 
 .site-nav a {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
   min-height: 2.85rem;
   padding: 0.7rem 1rem;
+  border: 1px solid transparent;
   color: var(--text-soft);
   font-weight: 600;
   background: transparent;
@@ -154,10 +158,11 @@ a {
 
 .site-nav a:hover,
 .site-nav a:focus-visible {
-  background: #222025;
-  color: #ffffff;
-  box-shadow: 0 10px 22px rgba(34, 32, 37, 0.18);
-  transform: translateY(-1px);
+  background: #222025 !important;
+  border-color: #222025 !important;
+  color: #ffffff !important;
+  box-shadow: 0 12px 24px rgba(34, 32, 37, 0.22) !important;
+  transform: translateY(-1px) scale(1.02);
   outline: none;
 }
 
@@ -172,7 +177,7 @@ a {
 
 .header-cta:hover,
 .button:hover {
-  transform: translateY(-2px);
+  transform: translateY(-2px) scale(1.02);
 }
 
 .hero,
@@ -293,8 +298,9 @@ a {
 
 .button-primary:hover,
 .button-primary:focus-visible {
-  background: #3a3338;
-  box-shadow: 0 18px 30px rgba(34, 32, 37, 0.24);
+  background: #3a3338 !important;
+  color: #ffffff !important;
+  box-shadow: 0 18px 30px rgba(34, 32, 37, 0.24) !important;
   outline: none;
 }
 
@@ -305,10 +311,10 @@ a {
 
 .button-secondary:hover,
 .button-secondary:focus-visible {
-  background: #222025;
-  color: #ffffff;
-  border-color: #222025;
-  box-shadow: 0 14px 28px rgba(34, 32, 37, 0.18);
+  background: #222025 !important;
+  color: #ffffff !important;
+  border-color: #222025 !important;
+  box-shadow: 0 14px 28px rgba(34, 32, 37, 0.18) !important;
   outline: none;
 }
 
