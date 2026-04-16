@@ -141,6 +141,7 @@ a {
   border-radius: 999px;
   text-decoration: none;
   transition: transform 180ms ease, box-shadow 180ms ease, background 180ms ease, color 180ms ease;
+  cursor: pointer;
 }
 
 .site-nav a {
@@ -148,12 +149,15 @@ a {
   padding: 0.7rem 1rem;
   color: var(--text-soft);
   font-weight: 600;
+  background: transparent;
 }
 
 .site-nav a:hover,
 .site-nav a:focus-visible {
   background: #222025;
   color: #ffffff;
+  box-shadow: 0 10px 22px rgba(34, 32, 37, 0.18);
+  transform: translateY(-1px);
   outline: none;
 }
 
@@ -287,9 +291,25 @@ a {
   box-shadow: 0 14px 28px rgba(34, 32, 37, 0.18);
 }
 
+.button-primary:hover,
+.button-primary:focus-visible {
+  background: #3a3338;
+  box-shadow: 0 18px 30px rgba(34, 32, 37, 0.24);
+  outline: none;
+}
+
 .button-secondary {
   border: 1px solid rgba(23, 19, 23, 0.08);
   background: rgba(255, 255, 255, 0.7);
+}
+
+.button-secondary:hover,
+.button-secondary:focus-visible {
+  background: #222025;
+  color: #ffffff;
+  border-color: #222025;
+  box-shadow: 0 14px 28px rgba(34, 32, 37, 0.18);
+  outline: none;
 }
 
 .hero-panel {
