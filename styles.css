@@ -564,6 +564,17 @@ a {
   color: var(--text-soft);
 }
 
+.price-total {
+  display: inline-flex;
+  width: fit-content;
+  padding: 0.42rem 0.7rem;
+  border: 1px solid rgba(255, 255, 255, 0.16);
+  border-radius: 999px;
+  background: rgba(168, 220, 235, 0.14);
+  font-size: 0.9rem;
+  font-weight: 700;
+}
+
 .price-card p {
   margin: 0.5rem 0 0;
 }
@@ -584,6 +595,10 @@ a {
 .price-card.featured p,
 .price-card.featured ul {
   color: #ffffff;
+}
+
+.price-card.featured .price-total {
+  color: rgba(255, 255, 255, 0.94);
 }
 
 .mini-grid {
@@ -825,6 +840,10 @@ a {
   .footer-grid > div,
   .info-strip article {
     padding: 1rem;
+  }
+
+  .site-footer a {
+    overflow-wrap: anywhere;
   }
 }
 
