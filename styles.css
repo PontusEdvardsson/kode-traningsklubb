@@ -549,6 +549,8 @@ a {
 }
 
 .price-card {
+  display: flex;
+  flex-direction: column;
   min-height: 20rem;
 }
 
@@ -584,6 +586,11 @@ a {
   padding-left: 1.15rem;
   color: var(--text-soft);
   line-height: 1.7;
+}
+
+.price-card .price-total {
+  order: 10;
+  margin-top: auto;
 }
 
 .price-card.featured {
@@ -842,7 +849,8 @@ a {
     padding: 1rem;
   }
 
-  .site-footer a {
+  .site-footer a,
+  .support-card a {
     overflow-wrap: anywhere;
   }
 }
