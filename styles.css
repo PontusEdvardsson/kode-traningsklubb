@@ -621,33 +621,29 @@ a {
   position: fixed;
   inset: 0;
   z-index: 100;
-  display: grid;
-  place-items: center;
+  display: none;
+  align-items: center;
+  justify-content: center;
   padding: clamp(1rem, 4vw, 3rem);
   background: rgba(23, 19, 23, 0.76);
   backdrop-filter: blur(18px);
-  opacity: 0;
-  pointer-events: none;
-  transition: opacity 180ms ease;
+  animation: lightbox-fade 160ms ease both;
 }
 
 .lightbox.is-open {
-  opacity: 1;
-  pointer-events: auto;
+  display: flex;
 }
 
 .lightbox-image {
-  max-width: min(1120px, 100%);
-  max-height: min(82vh, 760px);
+  display: block;
+  width: auto;
+  height: auto;
+  max-width: min(1120px, 92vw);
+  max-height: 82vh;
   border-radius: 1.35rem;
   box-shadow: 0 30px 90px rgba(0, 0, 0, 0.36);
   object-fit: contain;
-  transform: translateY(10px) scale(0.985);
-  transition: transform 180ms ease;
-}
-
-.lightbox.is-open .lightbox-image {
-  transform: translateY(0) scale(1);
+  animation: lightbox-zoom 180ms ease both;
 }
 
 .lightbox-close {
@@ -675,6 +671,26 @@ a {
   background: #ffffff;
   outline: none;
   transform: translateY(-1px);
+}
+
+@keyframes lightbox-fade {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes lightbox-zoom {
+  from {
+    transform: translateY(10px) scale(0.985);
+  }
+
+  to {
+    transform: translateY(0) scale(1);
+  }
 }
 
 .price-grid {

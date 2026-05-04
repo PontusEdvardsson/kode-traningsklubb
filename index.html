@@ -16,7 +16,7 @@
     href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@1,600;1,700&family=Outfit:wght@300;400;500;600;700;800&display=swap"
     rel="stylesheet"
   >
-  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="styles.css?v=2">
 </head>
 <body>
   <div id="top" class="page-top" aria-hidden="true"></div>
@@ -325,7 +325,7 @@
     </footer>
   </div>
 
-  <div class="lightbox" role="dialog" aria-modal="true" aria-hidden="true">
+  <div class="lightbox" role="dialog" aria-modal="true" aria-hidden="true" hidden>
     <button class="lightbox-close" type="button" aria-label="Stäng bildvisning">×</button>
     <img class="lightbox-image" src="" alt="">
   </div>
@@ -375,6 +375,7 @@
       const closeLightbox = () => {
         lightbox.classList.remove("is-open");
         lightbox.setAttribute("aria-hidden", "true");
+        lightbox.hidden = true;
         document.body.classList.remove("lightbox-open");
         lightboxImage.src = "";
         lightboxImage.alt = "";
@@ -395,6 +396,7 @@
         activeGalleryButton = button;
         lightboxImage.src = image.currentSrc || image.src;
         lightboxImage.alt = image.alt;
+        lightbox.hidden = false;
         lightbox.classList.add("is-open");
         lightbox.setAttribute("aria-hidden", "false");
         document.body.classList.add("lightbox-open");
