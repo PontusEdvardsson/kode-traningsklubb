@@ -19,6 +19,7 @@
   <link rel="stylesheet" href="styles.css">
 </head>
 <body>
+  <div id="top" class="page-top" aria-hidden="true"></div>
   <div class="background-glow background-glow-one"></div>
   <div class="background-glow background-glow-two"></div>
   <div class="background-glow background-glow-three"></div>
@@ -41,6 +42,7 @@
       </button>
       <nav class="site-nav" id="site-nav" aria-label="Huvudmeny">
         <a href="#om">Om</a>
+        <a href="#bilder">Bilder</a>
         <a href="#priser">Priser</a>
         <a href="#medlem">Bli medlem</a>
         <a href="#regler">Regler</a>
@@ -48,18 +50,20 @@
       </nav>
     </header>
 
-    <main id="top">
+    <main>
       <section class="hero">
         <div class="hero-copy">
           <h1>Kode Träningsklubb</h1>
           <p class="eyebrow">Ideell träningsförening i centrala Kode</p>
-          <div class="hero-actions">
-            <a class="button button-primary" href="#priser">Se priser</a>
-            <a class="button button-secondary" href="#kontakt">Kontakta oss</a>
-          </div>
+        <div class="hero-actions">
+          <a class="button button-primary" href="#priser">Se priser</a>
+          <a class="button button-secondary" href="#kontakt">Kontakta oss</a>
         </div>
+        </div>
+      </section>
 
-        <aside class="hero-panel">
+      <section class="hero-overview-panel" aria-label="Snabbfakta">
+        <div class="hero-panel">
           <div class="hero-stat">
             <span class="stat-label">Öppet</span>
             <strong>05:30-23:00</strong>
@@ -75,26 +79,25 @@
             <strong>Salto KS</strong>
             <p>Personlig app för medlemmar med godkänd betalning och signerat avtal.</p>
           </div>
-        </aside>
-      </section>
-
-      <section class="info-strip" aria-label="Snabbfakta">
-        <article>
-          <h2>Kalenderår</h2>
-          <p>Träningsavgiften gäller för innevarande år.</p>
-        </article>
-        <article>
-          <h2>Friskvård</h2>
-          <p>Träningskort kan köpas via ePassi. Medlemsavgiften swishas separat.</p>
-        </article>
-        <article>
-          <h2>För juniorer</h2>
-          <p>Barn under 16 år tränar tillsammans med ansvarig vuxen medlem. Från året man fyller 16 betalas träningsavgift.</p>
-        </article>
-        <article>
-          <h2>Gemensamt ansvar</h2>
-          <p>Alla medlemmar förväntas bidra till ordning, skötsel och städning.</p>
-        </article>
+        </div>
+        <div class="info-strip">
+          <article>
+            <h2>Kalenderår</h2>
+            <p>Träningsavgiften gäller för innevarande år.</p>
+          </article>
+          <article>
+            <h2>Friskvård</h2>
+            <p>Träningskort kan köpas via ePassi. Medlemsavgiften swishas separat.</p>
+          </article>
+          <article>
+            <h2>För juniorer</h2>
+            <p>Barn under 16 år tränar tillsammans med ansvarig vuxen medlem. Från året man fyller 16 betalas träningsavgift.</p>
+          </article>
+          <article>
+            <h2>Gemensamt ansvar</h2>
+            <p>Alla medlemmar förväntas bidra till ordning, skötsel och städning.</p>
+          </article>
+        </div>
       </section>
 
       <section class="section" id="om">
@@ -120,6 +123,26 @@
               <p>All träning sker på egen risk och varje medlem ansvarar för att ha egen försäkring.</p>
             </div>
           </div>
+        </div>
+      </section>
+
+      <section class="section" id="bilder">
+        <div class="section-heading">
+          <p class="eyebrow">Bilder</p>
+        </div>
+        <div class="gallery">
+          <figure>
+            <img src="assets/Kodetkbilder/IMG_3668.jpg" alt="Översikt över gymmets maskiner, fria vikter och roddmaskin" loading="lazy">
+          </figure>
+          <figure>
+            <img src="assets/Kodetkbilder/IMG_3670.jpg" alt="Styrkedel med bänkpress, kabelmaskin och skivstångsställning" loading="lazy">
+          </figure>
+          <figure>
+            <img src="assets/Kodetkbilder/IMG_3671.jpg" alt="Fria vikter, träningsbänkar och maskiner i gymmet" loading="lazy">
+          </figure>
+          <figure>
+            <img src="assets/Kodetkbilder/IMG_3674.jpg" alt="Konditionsyta med löpband, crosstrainer och motionscykel" loading="lazy">
+          </figure>
         </div>
       </section>
 
@@ -283,7 +306,7 @@
           <p>Swish: 123 52 41 708</p>
         </div>
         <div>
-          <h3>Organisationsnummer</h3>
+          <h3>Org.nr</h3>
           <p>802529-4045</p>
         </div>
         <div>

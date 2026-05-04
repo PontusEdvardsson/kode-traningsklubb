@@ -40,6 +40,11 @@ a {
   color: inherit;
 }
 
+.page-top {
+  position: absolute;
+  top: 0;
+}
+
 .background-glow {
   position: fixed;
   inset: auto;
@@ -209,6 +214,7 @@ a {
 
 .hero,
 .feature-strip,
+.hero-overview-panel,
 .info-strip,
 .section,
 .site-footer {
@@ -272,7 +278,7 @@ a {
 
 .hero h1 {
   max-width: 10ch;
-  font-size: clamp(3.6rem, 8vw, 6.3rem);
+  font-size: clamp(3.35rem, 7vw, 5.8rem);
   margin-bottom: 0;
 }
 
@@ -347,10 +353,9 @@ a {
   outline: none;
 }
 
-.hero-panel {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 1rem;
+.hero-overview-panel {
+  width: min(1040px, 100%);
+  margin: 1.5rem auto 0;
   padding: 1.25rem;
   border: 1px solid rgba(255, 255, 255, 0.9);
   border-radius: 2.3rem;
@@ -360,8 +365,14 @@ a {
   box-shadow: var(--shadow-strong);
 }
 
+.hero-panel {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1rem;
+}
+
 .hero-stat {
-  min-height: 13rem;
+  min-height: 12rem;
   padding: 1.25rem;
   border: 1px solid var(--line);
   border-radius: 1.6rem;
@@ -396,8 +407,8 @@ a {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   gap: 1rem;
-  width: min(1040px, 100%);
-  margin: 1.35rem auto 0;
+  width: 100%;
+  margin: 1rem 0 0;
 }
 
 .feature-strip article,
@@ -472,7 +483,12 @@ a {
 }
 
 .section-heading h2 {
-  font-size: clamp(2.65rem, 6vw, 4.8rem);
+  font-size: clamp(2.2rem, 4.4vw, 3.55rem);
+  line-height: 1.02;
+}
+
+.section-dark .section-heading h2 {
+  font-size: clamp(2.05rem, 4.1vw, 3.3rem);
 }
 
 .section-intro {
@@ -482,6 +498,7 @@ a {
 
 .two-column,
 .fact-stack,
+.gallery,
 .price-grid,
 .mini-grid,
 .note-grid,
@@ -514,6 +531,11 @@ a {
   box-shadow: var(--shadow-soft);
 }
 
+.text-card {
+  display: flex;
+  align-items: center;
+}
+
 .text-card p,
 .fact-card p,
 .note-card p {
@@ -529,6 +551,44 @@ a {
 .text-card,
 .fact-card {
   height: 100%;
+}
+
+.gallery {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  align-items: start;
+}
+
+.gallery figure {
+  aspect-ratio: 4 / 3;
+  overflow: hidden;
+  margin: 0;
+  border: 1px solid var(--line);
+  border-radius: 1.6rem;
+  background: var(--surface-strong);
+  box-shadow: var(--shadow-soft);
+}
+
+.gallery img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center center;
+}
+
+.gallery figure:first-child img {
+  object-position: center top;
+}
+
+.gallery figure:nth-child(2) img {
+  object-position: center 48%;
+}
+
+.gallery figure:nth-child(3) img {
+  object-position: center 50%;
+}
+
+.gallery figure:nth-child(4) img {
+  object-position: center 54%;
 }
 
 .price-grid {
@@ -667,15 +727,33 @@ a {
 
 .contact-grid,
 .footer-grid {
-  grid-template-columns: repeat(5, 1fr);
+  grid-template-columns: repeat(6, minmax(0, 1fr));
 }
 
 .footer-grid > div {
+  min-width: 0;
   padding: 1.35rem;
   border: 1px solid var(--line);
   border-radius: 1.6rem;
   background: var(--surface-strong);
   box-shadow: var(--shadow-soft);
+}
+
+.footer-grid > div:nth-child(1) {
+  grid-column: span 2;
+}
+
+.footer-grid > div:nth-child(2),
+.footer-grid > div:nth-child(3) {
+  grid-column: span 2;
+}
+
+.footer-grid > div:nth-child(4) {
+  grid-column: span 3;
+}
+
+.footer-grid > div:nth-child(5) {
+  grid-column: span 3;
 }
 
 .footer-note {
@@ -701,6 +779,7 @@ a {
   .feature-strip,
   .info-strip,
   .mini-grid,
+  .gallery,
   .note-grid,
   .steps,
   .rules-grid,
@@ -713,6 +792,10 @@ a {
   .price-grid,
   .support-grid {
     grid-template-columns: 1fr;
+  }
+
+  .footer-grid > div {
+    grid-column: auto;
   }
 }
 
@@ -793,7 +876,7 @@ a {
     max-width: none;
   }
 
-  .hero-panel,
+  .hero-overview-panel,
   .section,
   .site-footer {
     padding: 1rem;
@@ -808,6 +891,7 @@ a {
   .feature-strip,
   .info-strip,
   .mini-grid,
+  .gallery,
   .note-grid,
   .steps,
   .support-grid,
@@ -857,8 +941,16 @@ a {
 
 @media (max-width: 520px) {
   .feature-strip,
+  .gallery,
   .rules-grid {
     grid-template-columns: 1fr;
+  }
+
+  .gallery figure:first-child,
+  .gallery figure:nth-child(2),
+  .gallery figure:nth-child(3),
+  .gallery figure:nth-child(4) {
+    grid-column: auto;
   }
 
   .info-strip,
@@ -869,6 +961,10 @@ a {
   .contact-grid,
   .footer-grid {
     grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .footer-grid {
+    grid-template-columns: 1fr;
   }
 
   .price-grid {
