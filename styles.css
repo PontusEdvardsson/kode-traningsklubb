@@ -31,6 +31,10 @@ body {
     linear-gradient(180deg, #ffffff 0%, #fbfaf7 42%, #f7f2eb 100%);
 }
 
+body.lightbox-open {
+  overflow: hidden;
+}
+
 img {
   display: block;
   max-width: 100%;
@@ -568,11 +572,33 @@ a {
   box-shadow: var(--shadow-soft);
 }
 
+.gallery-trigger {
+  display: block;
+  width: 100%;
+  height: 100%;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  cursor: zoom-in;
+}
+
+.gallery-trigger:focus-visible {
+  outline: 3px solid rgba(77, 149, 168, 0.5);
+  outline-offset: -6px;
+}
+
 .gallery img {
   width: 100%;
   height: 100%;
   object-fit: cover;
   object-position: center center;
+  transition: transform 220ms ease, filter 220ms ease;
+}
+
+.gallery-trigger:hover img,
+.gallery-trigger:focus-visible img {
+  filter: saturate(1.04) contrast(1.02);
+  transform: scale(1.025);
 }
 
 .gallery figure:first-child img {
@@ -589,6 +615,66 @@ a {
 
 .gallery figure:nth-child(4) img {
   object-position: center 54%;
+}
+
+.lightbox {
+  position: fixed;
+  inset: 0;
+  z-index: 100;
+  display: grid;
+  place-items: center;
+  padding: clamp(1rem, 4vw, 3rem);
+  background: rgba(23, 19, 23, 0.76);
+  backdrop-filter: blur(18px);
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 180ms ease;
+}
+
+.lightbox.is-open {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.lightbox-image {
+  max-width: min(1120px, 100%);
+  max-height: min(82vh, 760px);
+  border-radius: 1.35rem;
+  box-shadow: 0 30px 90px rgba(0, 0, 0, 0.36);
+  object-fit: contain;
+  transform: translateY(10px) scale(0.985);
+  transition: transform 180ms ease;
+}
+
+.lightbox.is-open .lightbox-image {
+  transform: translateY(0) scale(1);
+}
+
+.lightbox-close {
+  position: fixed;
+  top: clamp(0.8rem, 3vw, 1.5rem);
+  right: clamp(0.8rem, 3vw, 1.5rem);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 3rem;
+  height: 3rem;
+  padding: 0;
+  border: 1px solid rgba(255, 255, 255, 0.32);
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.9);
+  color: var(--text);
+  font-size: 2rem;
+  line-height: 1;
+  cursor: pointer;
+  box-shadow: 0 16px 38px rgba(0, 0, 0, 0.22);
+}
+
+.lightbox-close:hover,
+.lightbox-close:focus-visible {
+  background: #ffffff;
+  outline: none;
+  transform: translateY(-1px);
 }
 
 .price-grid {
@@ -936,6 +1022,15 @@ a {
   .site-footer a,
   .support-card a {
     overflow-wrap: anywhere;
+  }
+
+  .lightbox {
+    padding: 0.75rem;
+  }
+
+  .lightbox-image {
+    max-height: 78vh;
+    border-radius: 1rem;
   }
 }
 

@@ -132,16 +132,24 @@
         </div>
         <div class="gallery">
           <figure>
-            <img src="assets/Kodetkbilder/IMG_3668.jpg" alt="Översikt över gymmets maskiner, fria vikter och roddmaskin" loading="lazy">
+            <button class="gallery-trigger" type="button" aria-label="Förstora bild: översikt över gymmets maskiner, fria vikter och roddmaskin">
+              <img src="assets/Kodetkbilder/IMG_3668.jpg" alt="Översikt över gymmets maskiner, fria vikter och roddmaskin" loading="lazy">
+            </button>
           </figure>
           <figure>
-            <img src="assets/Kodetkbilder/IMG_3670.jpg" alt="Styrkedel med bänkpress, kabelmaskin och skivstångsställning" loading="lazy">
+            <button class="gallery-trigger" type="button" aria-label="Förstora bild: styrkedel med bänkpress, kabelmaskin och skivstångsställning">
+              <img src="assets/Kodetkbilder/IMG_3670.jpg" alt="Styrkedel med bänkpress, kabelmaskin och skivstångsställning" loading="lazy">
+            </button>
           </figure>
           <figure>
-            <img src="assets/Kodetkbilder/IMG_3671.jpg" alt="Fria vikter, träningsbänkar och maskiner i gymmet" loading="lazy">
+            <button class="gallery-trigger" type="button" aria-label="Förstora bild: fria vikter, träningsbänkar och maskiner i gymmet">
+              <img src="assets/Kodetkbilder/IMG_3671.jpg" alt="Fria vikter, träningsbänkar och maskiner i gymmet" loading="lazy">
+            </button>
           </figure>
           <figure>
-            <img src="assets/Kodetkbilder/IMG_3674.jpg" alt="Konditionsyta med löpband, crosstrainer och motionscykel" loading="lazy">
+            <button class="gallery-trigger" type="button" aria-label="Förstora bild: konditionsyta med löpband, crosstrainer och motionscykel">
+              <img src="assets/Kodetkbilder/IMG_3674.jpg" alt="Konditionsyta med löpband, crosstrainer och motionscykel" loading="lazy">
+            </button>
           </figure>
         </div>
       </section>
@@ -316,6 +324,12 @@
       </div>
     </footer>
   </div>
+
+  <div class="lightbox" role="dialog" aria-modal="true" aria-hidden="true">
+    <button class="lightbox-close" type="button" aria-label="Stäng bildvisning">×</button>
+    <img class="lightbox-image" src="" alt="">
+  </div>
+
   <script>
     (function () {
       const header = document.querySelector(".site-header");
@@ -345,6 +359,63 @@
       window.addEventListener("resize", () => {
         if (window.innerWidth > 760) {
           closeMenu();
+        }
+      });
+
+      const lightbox = document.querySelector(".lightbox");
+      const lightboxImage = document.querySelector(".lightbox-image");
+      const lightboxClose = document.querySelector(".lightbox-close");
+      const galleryButtons = document.querySelectorAll(".gallery-trigger");
+      let activeGalleryButton = null;
+
+      if (!lightbox || !lightboxImage || !lightboxClose || galleryButtons.length === 0) {
+        return;
+      }
+
+      const closeLightbox = () => {
+        lightbox.classList.remove("is-open");
+        lightbox.setAttribute("aria-hidden", "true");
+        document.body.classList.remove("lightbox-open");
+        lightboxImage.src = "";
+        lightboxImage.alt = "";
+
+        if (activeGalleryButton) {
+          activeGalleryButton.focus();
+          activeGalleryButton = null;
+        }
+      };
+
+      const openLightbox = (button) => {
+        const image = button.querySelector("img");
+
+        if (!image) {
+          return;
+        }
+
+        activeGalleryButton = button;
+        lightboxImage.src = image.currentSrc || image.src;
+        lightboxImage.alt = image.alt;
+        lightbox.classList.add("is-open");
+        lightbox.setAttribute("aria-hidden", "false");
+        document.body.classList.add("lightbox-open");
+        lightboxClose.focus();
+      };
+
+      galleryButtons.forEach((button) => {
+        button.addEventListener("click", () => openLightbox(button));
+      });
+
+      lightboxClose.addEventListener("click", closeLightbox);
+
+      lightbox.addEventListener("click", (event) => {
+        if (event.target === lightbox) {
+          closeLightbox();
+        }
+      });
+
+      document.addEventListener("keydown", (event) => {
+        if (event.key === "Escape" && lightbox.classList.contains("is-open")) {
+          closeLightbox();
         }
       });
     }());
