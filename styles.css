@@ -878,12 +878,6 @@ a {
   scroll-margin-top: 8.5rem;
 }
 
-.section-heading .price-heading {
-  font-size: 0.83rem;
-  line-height: 1.3;
-  letter-spacing: 0.18em;
-}
-
 .price-terms {
   margin: 0.85rem 0 0;
   color: var(--text-soft);
