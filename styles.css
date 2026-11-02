@@ -871,7 +871,69 @@ a {
 }
 
 .price-grid {
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+.price-card-family {
+  grid-column: 1 / -1;
+}
+
+.previous-prices,
+.renewal-card {
+  margin-top: 1rem;
+}
+
+.previous-prices summary {
+  cursor: pointer;
+  font-weight: 700;
+}
+
+.previous-prices summary:focus-visible {
+  outline: 2px solid var(--accent-deep);
+  outline-offset: 4px;
+}
+
+.price-table-wrap {
+  overflow-x: auto;
+}
+
+.price-table {
+  width: 100%;
+  border-collapse: collapse;
+  line-height: 1.5;
+}
+
+.price-table caption {
+  margin-bottom: 0.7rem;
+  text-align: left;
+  font-weight: 700;
+}
+
+.price-table th,
+.price-table td {
+  padding: 0.8rem 0.5rem;
+  border-bottom: 1px solid var(--line);
+  text-align: left;
+}
+
+.price-table tbody th {
+  font-weight: 400;
+}
+
+.price-table th:last-child,
+.price-table td:last-child {
+  text-align: right;
+  white-space: nowrap;
+}
+
+.renewal-card {
+  background: linear-gradient(135deg, rgba(168, 220, 235, 0.25), var(--surface-strong));
+  scroll-margin-top: 8.5rem;
+}
+
+.renewal-card .renewal-deadline {
+  color: var(--text);
+  font-size: 1.25rem;
 }
 
 .price-card,
@@ -929,7 +991,7 @@ a {
 
 .price-card .price-total {
   order: 10;
-  margin-top: auto;
+  margin-top: 1rem;
 }
 
 .price-card.featured {
@@ -975,7 +1037,7 @@ a {
 }
 
 .support-grid {
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: repeat(2, minmax(0, 1fr));
   margin-top: 1rem;
 }
 
@@ -1153,6 +1215,7 @@ a {
 
   .hero h1 {
     max-width: none;
+    font-size: clamp(2.35rem, 12vw, 3.35rem);
   }
 
   .hero-overview-panel,
@@ -1210,7 +1273,7 @@ a {
   }
 
   .price-grid {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
+    grid-template-columns: 1fr;
     align-items: stretch;
   }
 
@@ -1259,6 +1322,10 @@ a {
 @media (max-width: 520px) {
   .feature-strip,
   .gallery,
+  .info-strip,
+  .note-grid,
+  .steps,
+  .support-grid,
   .rules-grid {
     grid-template-columns: 1fr;
   }
@@ -1284,11 +1351,7 @@ a {
     grid-template-columns: 1fr;
   }
 
-  .info-strip,
   .mini-grid,
-  .note-grid,
-  .steps,
-  .support-grid,
   .contact-grid,
   .footer-grid {
     grid-template-columns: repeat(2, minmax(0, 1fr));
@@ -1299,7 +1362,7 @@ a {
   }
 
   .price-grid {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
+    grid-template-columns: 1fr;
   }
 
   .price-grid .price-card:first-child {
