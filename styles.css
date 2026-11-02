@@ -871,69 +871,24 @@ a {
 }
 
 .price-grid {
-  grid-template-columns: repeat(2, minmax(0, 1fr));
+  grid-template-columns: repeat(3, minmax(0, 1fr));
 }
 
-.price-card-family {
-  grid-column: 1 / -1;
-}
-
-.previous-prices,
-.renewal-card {
-  margin-top: 1rem;
-}
-
-.previous-prices summary {
-  cursor: pointer;
-  font-weight: 700;
-}
-
-.previous-prices summary:focus-visible {
-  outline: 2px solid var(--accent-deep);
-  outline-offset: 4px;
-}
-
-.price-table-wrap {
-  overflow-x: auto;
-}
-
-.price-table {
-  width: 100%;
-  border-collapse: collapse;
-  line-height: 1.5;
-}
-
-.price-table caption {
-  margin-bottom: 0.7rem;
-  text-align: left;
-  font-weight: 700;
-}
-
-.price-table th,
-.price-table td {
-  padding: 0.8rem 0.5rem;
-  border-bottom: 1px solid var(--line);
-  text-align: left;
-}
-
-.price-table tbody th {
-  font-weight: 400;
-}
-
-.price-table th:last-child,
-.price-table td:last-child {
-  text-align: right;
-  white-space: nowrap;
-}
-
-.renewal-card {
-  background: linear-gradient(135deg, rgba(168, 220, 235, 0.25), var(--surface-strong));
+#fornya {
   scroll-margin-top: 8.5rem;
 }
 
-.renewal-card .renewal-deadline {
-  color: var(--text);
-  font-size: 1.25rem;
+.section-heading .price-heading {
+  font-size: 0.83rem;
+  line-height: 1.3;
+  letter-spacing: 0.18em;
+}
+
+.price-terms {
+  margin: 0.85rem 0 0;
+  color: var(--text-soft);
+  line-height: 1.5;
+  font-size: 0.95rem;
 }
 
 .price-card,
@@ -952,46 +907,46 @@ a {
 .price-card {
   display: flex;
   flex-direction: column;
-  min-height: 20rem;
-}
-
-.price-main {
-  margin: 0.7rem 0 0;
-  font-size: clamp(1.9rem, 3vw, 3rem);
-  line-height: 1;
-  letter-spacing: -0.05em;
-  color: var(--text);
+  min-width: 0;
 }
 
 .price-meta {
+  min-height: 3em;
   color: var(--text-soft);
+  font-size: 0.95rem;
 }
 
-.price-total {
-  display: inline-flex;
-  width: fit-content;
-  padding: 0.42rem 0.7rem;
-  border: 1px solid rgba(255, 255, 255, 0.16);
-  border-radius: 999px;
-  background: rgba(168, 220, 235, 0.14);
-  font-size: 0.9rem;
-  font-weight: 700;
+.price-card .price-meta {
+  line-height: 1.5;
 }
 
 .price-card p {
   margin: 0.5rem 0 0;
 }
 
-.price-card ul {
-  margin: 1rem 0 0;
-  padding-left: 1.15rem;
-  color: var(--text-soft);
-  line-height: 1.7;
+.price-options {
+  margin: 0.65rem 0 0;
+  color: #ffffff;
 }
 
-.price-card .price-total {
-  order: 10;
-  margin-top: 1rem;
+.price-options > div {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 0.5rem;
+  padding: 0.3rem 0;
+  border-top: 1px solid var(--line-strong);
+}
+
+.price-options dt {
+  font-size: 0.95rem;
+}
+
+.price-options dd {
+  margin: 0;
+  font-size: clamp(1.5rem, 2.5vw, 2.1rem);
+  letter-spacing: -0.04em;
+  white-space: nowrap;
 }
 
 .price-card.featured {
@@ -1000,13 +955,19 @@ a {
 }
 
 .price-card.featured h3,
-.price-card.featured p,
-.price-card.featured ul {
+.price-card.featured p {
   color: #ffffff;
 }
 
-.price-card.featured .price-total {
-  color: rgba(255, 255, 255, 0.94);
+.info-strip h2 {
+  font-size: 1.1rem;
+}
+
+.info-strip article,
+.note-card,
+.step-card,
+.support-card {
+  overflow-wrap: anywhere;
 }
 
 .mini-grid {
@@ -1037,8 +998,18 @@ a {
 }
 
 .support-grid {
-  grid-template-columns: repeat(2, minmax(0, 1fr));
+  grid-template-columns: repeat(3, minmax(0, 1fr));
   margin-top: 1rem;
+}
+
+.note-card p,
+.support-card p {
+  margin: 0.65rem 0 0;
+  line-height: 1.5;
+}
+
+.support-card p {
+  font-size: 0.95rem;
 }
 
 .section-dark .section-intro,
@@ -1130,9 +1101,16 @@ a {
     grid-template-columns: repeat(2, 1fr);
   }
 
-  .price-grid,
   .support-grid {
     grid-template-columns: 1fr;
+  }
+
+  .price-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .price-grid .price-card:last-child {
+    grid-column: 1 / -1;
   }
 
   .footer-grid > div {
@@ -1277,22 +1255,12 @@ a {
     align-items: stretch;
   }
 
-  .price-grid .price-card:first-child {
-    grid-column: 1 / -1;
-  }
-
   .price-card {
-    min-height: auto;
     padding: 1.1rem;
   }
 
-  .price-main {
-    font-size: clamp(2rem, 10vw, 2.7rem);
-  }
-
-  .price-card ul {
-    font-size: 0.95rem;
-    line-height: 1.5;
+  .price-meta {
+    min-height: 0;
   }
 
   .note-card,
@@ -1322,9 +1290,6 @@ a {
 @media (max-width: 520px) {
   .feature-strip,
   .gallery,
-  .info-strip,
-  .note-grid,
-  .steps,
   .support-grid,
   .rules-grid {
     grid-template-columns: 1fr;
@@ -1351,7 +1316,10 @@ a {
     grid-template-columns: 1fr;
   }
 
+  .info-strip,
   .mini-grid,
+  .note-grid,
+  .steps,
   .contact-grid,
   .footer-grid {
     grid-template-columns: repeat(2, minmax(0, 1fr));
@@ -1359,17 +1327,5 @@ a {
 
   .footer-grid {
     grid-template-columns: 1fr;
-  }
-
-  .price-grid {
-    grid-template-columns: 1fr;
-  }
-
-  .price-grid .price-card:first-child {
-    grid-column: 1 / -1;
-  }
-
-  .price-card {
-    min-height: auto;
   }
 }
